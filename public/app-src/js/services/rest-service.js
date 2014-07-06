@@ -25,7 +25,7 @@ angular.module('service.abstract-rest', []).factory('AbstractRestService',['$htt
 	function getConfig() {
 		return {
 			headers: {
-				'Auth-Token': 'test'
+				// 'Auth-Token': 'test'
 			}
 		};
 	}

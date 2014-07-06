@@ -19,7 +19,9 @@ angular.module('controller.page.releases', []).controller('ReleasesCtrl', ["$sco
 		if($stateParams.releaseId) {
 
 			loadDetailedReleaseFromId($stateParams.releaseId)
-					.then($scope.startCountree);
+					.then(function(data) {
+						console.log(data);
+					});
 		}
 	});
 
@@ -43,37 +45,15 @@ angular.module('controller.page.releases', []).controller('ReleasesCtrl', ["$sco
   }
 
 
-  $scope.startCountree =function(countreeRef) {
-  	countreeRef.start();
-  }
-
-
-  $scope.stopCountree =function() {
-  	$scope.page.detailed.countree.stop();
-  }
-
+ 
 
   function loadDetailedReleaseFromId(releaseId) {
   	var deferred = $q.defer();
 
   	ReleaseService.getReleaseFromId(releaseId, function onSuccess(releaseData) {
 	  	$scope.page.detailed.release = releaseData;
-	  	$scope.page.detailed.countree = CountreeService.getCountreeFromDate(new Date(releaseData.default.release_date));
-	  	$scope.page.detailed.countree.subscribeOnInterval("ui", onCountIntervalDoUI);
-	  	deferred.resolve($scope.page.detailed.countree);
+	  	deferred.resolve($scope.page.detailed.release);
 	  });
-
-	  function onCountIntervalDoUI(countResult) {
-	  	
-	  	setTimeout(
-	  		function() {
-	  			$scope.$apply(function() {
-	  				$scope.page.detailed.countResult = countResult;	
-	  			}
-	  		);}
-	  	);
-	  	// console.log($scope.page.detailed.countResult);
-	  }
   	
   	return deferred.promise;
   }

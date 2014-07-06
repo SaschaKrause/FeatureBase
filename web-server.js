@@ -7,9 +7,6 @@ var http = require('http');
 var path = require('path');
 
 var app = module.exports = express();
-var Firebase = require('firebase');
-var myRootRef = new Firebase('https://myprojectname.firebaseIO-demo.com/');
-myRootRef.set("hello world!");
 
 console.log("NODE_ENV: " + process.env.NODE_ENV);
 

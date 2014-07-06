@@ -2,17 +2,18 @@
 angular.module('service.release', []).factory('ReleaseService',['$http', 'AbstractRestService', function($http, AbstractRestService) {
 	"use strict";
 	var service = {
-		PATH_RELEASES: '/releases.json',
+		PATH_PROJECT_BY_ID: '/project/pixformance',
+		PATH_FEATURE_BY_ID: '/project/pixformance/feature'
 	};
 	
 
 
 	service.getAllReleases = function(onSuccess, onError) {
-		AbstractRestService.get(this.PATH_RELEASES, onSuccess, onError);
+		AbstractRestService.get(service.PATH_PROJECT_BY_ID, onSuccess, onError);
 	};
 
 	service.getReleaseFromId = function(releaseId, onSuccess, onError) {
-		AbstractRestService.get('/releases/'+releaseId+'.json', onSuccess, onError);
+		AbstractRestService.get(service.PATH_FEATURE_BY_ID+'/'+releaseId+'', onSuccess, onError);
 	};
 	
 	return service;
