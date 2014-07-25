@@ -1,5 +1,5 @@
 
-angular.module("config.routes", []).constant('routesCfg', [
+angular.module('config.routes', []).constant('routesCfg', [
 
 		// layouts
 		{
@@ -13,16 +13,16 @@ angular.module("config.routes", []).constant('routesCfg', [
 			templateUrl: 'partials/layout_list'
 		},
 		{
-			state: 'counter-detail',
+			state: 'detail',
 			abstarct: true,
-			templateUrl: 'partials/layout_counter-detail'
+			templateUrl: 'partials/layout_feature-detail'
 		},
 
 		// releases
-		{state: 'list.releases',														url: '/release/list',																			views: {"content": {templateUrl: 'partials/list_releases',													controller: 'ReleasesCtrl' } } },
+		{state: 'list.features',														url: '/feature/list',																			views: {'content': {templateUrl: 'partials/list_releases',													controller: 'FeatureListCtrl' } } },
 
-		{state: 'counter-detail.release',										url: '/releases/{releaseId}',															views: {"content": {templateUrl: 'partials/counter-detail_release',									controller: 'ReleasesCtrl' } } },
+		{state: 'detail.feature',														url: '/feature/{featureId}',															views: {'content': {templateUrl: 'partials/counter-detail_release',									controller: 'FeatureDetailCtrl' } } },
 
-		{state: 'app.profile',															url: '/profile',																					views: {"content": {templateUrl: 'partials/profile',																controller: 'ProfileCtrl' } } },
-		{state: 'app.initialisation-main',									url: '/init',																							views: {"content": {templateUrl: 'partials/init',																		controller: 'ProfileCtrl'} } },
+		{state: 'app.profile',															url: '/profile',																					views: {'content': {templateUrl: 'partials/profile',																controller: 'ProfileCtrl' } } },
+		{state: 'app.initialisation-main',									url: '/init',																							views: {'content': {templateUrl: 'partials/init',																		controller: 'ProfileCtrl'} } },
 	]);

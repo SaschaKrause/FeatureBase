@@ -1,29 +1,18 @@
 nav.navbar.navbar-default.ctrs-navigation(role='navigation', ng-controller="NavigationCtrl")
-	.container
-		.navbar-header
-			button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-				span.sr-only Toggle navigation
-				span.icon-bar
-				span.icon-bar
-				span.icon-bar
-
-			//- a.navbar-brand(href='#', class="hidden-sm")
-			//- 	img(src="/images/logosmall.png", width="120")
-			//- a.navbar-brand(href='#', class="hidden-xs hidden-lg hidden-md")
-			//- 	img(src="/images/icons/pixformance_x.png", height="20")
-
-		#bs-example-navbar-collapse-1.collapse.navbar-collapse
+	div
+		#bs-example-navbar-collapse-1.collapse.navbar-collapse(style="text-align:center")
 			ul.nav.navbar-nav
+				li.active
+					a(ui-sref='app.profile') Features
 				li
-					a(ui-sref='app.profile') view1
+					a(ui-sref='list.features') Dates
 				li
-					a(ui-sref='list.releases') releases
+					a(ui-sref='list.features') 
 
 			ul.nav.navbar-nav.navbar-right
 				li.dropdown()
 					a.dropdown-toggle(href='javascript:void(0);', data-toggle='dropdown')
-						i(class="icon-user")
-						| asdsad
+						i.fa.fa-gear
 						b.caret
 					ul.dropdown-menu
 						li

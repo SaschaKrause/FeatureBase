@@ -1,5 +1,5 @@
 (function () {
-  "use strict";
+  'use strict';
 
   var mainApp = angular.module('myApp', [
       // lib
@@ -8,8 +8,6 @@
       // config
       'config.routes',
 
-      // controller
-      'controller.page.releases',
 
       'controller.include.navigation',
       'controller.misc.bodystyle',
@@ -18,9 +16,7 @@
       'controller.profile',
 
       // service
-      'service.abstract-rest',
-      'service.countree',
-      'service.release'
+      'service.countree'
   ]);
 
 
@@ -43,7 +39,7 @@
           });
     });
     
-    $urlRouterProvider.otherwise("/init"); 
+    $urlRouterProvider.otherwise('/init'); 
 
   }]);
 
@@ -51,9 +47,11 @@
   mainApp.config(['$httpProvider', function($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     // $httpProvider.defaults.useXDomain = true;
-    // $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+    // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   }]);
      
+
+
 
 })();
 

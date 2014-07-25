@@ -1,6 +1,60 @@
-div
-	| rls
 
-	div(ng-repeat="feature in page.overview.releases.features")
-		a(ng-click="showDetailedRelease(feature.name)")
-			| {{feature.title}}:
+section.title-section
+	h4
+		| Project Overview
+
+
+section.row.info
+	div.content.col-md-offset-3.col-md-6
+		div.row
+			div.col-md-12
+				h2.project-title
+					| {{page.list.features.title}} 
+		div.row
+			div.col-md-12
+				i.fa.fa-calendar.margin-right
+				span
+					| {{getProjectStartDate()}}
+		hr
+		div.row.description
+			div.col-md-12
+				| Club Owners can bookmark workouts inside the predefined workout overview. These workouts are then easier to select when activation a new QR Code (Member)
+
+
+
+span.navigation(ng-include="'partials/navigation.jade'")
+	
+
+
+
+section.title-section
+	h4
+		| Features
+
+section.action-bar
+	span
+		i.fa.fa-plus 
+		|  Draft new Feature
+
+
+section.row.feature-list
+	div.col-md-6.feature-item(ng-repeat="feature in page.list.features.features")
+		div.item(ng-click="showDetailedFeature(feature.name)")
+			//- icon, title, state
+			div.row.head
+				div.col-md-1
+					i.fa.fa-flask
+				div.col-md-7
+					span.title
+						| {{feature.title}}
+				div.col-md-4(style="text-align:right")
+					span.state
+						| pubished
+
+			//- description
+			div.row.description
+				div.col-md-12
+					| {{feature.description}}
+
+			//- a(ng-click="showDetailedFeature(feature.name)")
+				| {{feature.title}}: {{($index)%3 == 0}}

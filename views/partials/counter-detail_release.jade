@@ -1,14 +1,22 @@
 div(class="ctrs-detailed-release-title")
 	|{{page.detailed.release.name}}
 
+button(ng-click="filterUsagesByOrigin()")
+	| filter localhost
 div(class="ctrs-detailed-release-counter")
 	span(class="ctrs-counter-number large")
 		| {{page.detailed.release.usages.length}} 
 	span(class="ctrs-counter-number-suffix")
 		| Usages - 
 	
+div(ng-repeat="(key,value) in page.detailed.dateData")
+	{{key}} - {{value.length}}
+	div(ng-repeat="bla in page.detailed.dateData[key]")
+		|--- {{getUAInfo(bla.userAgent).browser}} // {{getUAInfo(bla.userAgent).os}}
+div(class="ctrs-detailed-release-info", style="text-align:center; padding-top: 40px;")
+		div(id="container")
 
-div(class="ctrs-detailed-release-info")
+
 
 //- | {{page.detailed.release.default.country}}: {{page.detailed.release.default.release_date}}
 //- hr

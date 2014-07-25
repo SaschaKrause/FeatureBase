@@ -1,6 +1,7 @@
 // TODO: add the "service.rest"-module dependency to your mainApp (public/app-src/js/app.js)
-angular.module('service.abstract-rest', []).factory('AbstractRestService',['$http', function($http) {
-	
+angular.module('myApp').factory('AbstractRestService',['$http', function($http) {
+	'use strict';
+
 	var service = {
 		URL: BACKEND_URL // set in index.jade (index_debug.jade)
 	};
@@ -16,7 +17,7 @@ angular.module('service.abstract-rest', []).factory('AbstractRestService',['$htt
 		}).error(function(data, status){
 			onError && onError(data, status);
 		});
-	}
+	};
 
 
 	/**

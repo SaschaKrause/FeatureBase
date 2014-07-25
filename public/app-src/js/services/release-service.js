@@ -1,6 +1,5 @@
-// TODO: add the "service.rest"-module dependency to your mainApp (public/app-src/js/app.js)
-angular.module('service.release', []).factory('ReleaseService',['$http', 'AbstractRestService', function($http, AbstractRestService) {
-	"use strict";
+angular.module('myApp').factory('FeatureService',['$http', 'AbstractRestService', function($http, AbstractRestService) {
+	'use strict';
 	var service = {
 		PATH_PROJECT_BY_ID: '/project/pixformance',
 		PATH_FEATURE_BY_ID: '/project/pixformance/feature'
@@ -8,12 +7,12 @@ angular.module('service.release', []).factory('ReleaseService',['$http', 'Abstra
 	
 
 
-	service.getAllReleases = function(onSuccess, onError) {
+	service.getProjectInfo = function(onSuccess, onError) {
 		AbstractRestService.get(service.PATH_PROJECT_BY_ID, onSuccess, onError);
 	};
 
-	service.getReleaseFromId = function(releaseId, onSuccess, onError) {
-		AbstractRestService.get(service.PATH_FEATURE_BY_ID+'/'+releaseId+'', onSuccess, onError);
+	service.getFeatureFromId = function(featureId, onSuccess, onError) {
+		AbstractRestService.get(service.PATH_FEATURE_BY_ID+'/'+featureId+'', onSuccess, onError);
 	};
 	
 	return service;
