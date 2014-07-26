@@ -12,16 +12,19 @@ block body
 
 		
 	//- libs
-	script(src='app-src/lib/bower/angular/angular.js')
-	script(src='app-src/lib/bower/angular-ui-router/release/angular-ui-router.js')
-	script(src='app-src/lib/bower/jquery/dist/jquery.js')
-	script(src='app-src/lib/bower/lodash/lodash.js')
-	script(src='app-src/lib/bower/momentjs/moment.js')
-	script(src='app-src/lib/bower/ua-parser-js/src/ua-parser.js')
-	script(src='app-src/lib/manual/highcharts/highcharts.js')
-	script(src='app-src/lib/manual/highcharts/highcharts-more.js')
+	script(src='app-lib/bower/angular/angular.js')
+	script(src='app-lib/bower/angular-ui-router/release/angular-ui-router.js')
+	script(src='app-lib/bower/modernizr/modernizr.js')
+	script(src='app-lib/bower/jquery/dist/jquery.js')
+	script(src='app-lib/bower/foundation/js/foundation.js')
+	script()
+		$(document).foundation();
+
+	script(src='app-lib/bower/lodash/lodash.js')
+	script(src='app-lib/bower/momentjs/moment.js')
+	script(src='app-lib/bower/ua-parser-js/src/ua-parser.js')
 	
-	script(src='app-src/js/app.js')
+	script(src='app-src/app.js')
 
 	//- services
 	script(src='app-src/js/services/rest-service.js')
@@ -30,10 +33,10 @@ block body
 	//- controllers
 	script(src='app-src/js/controllers/main-ctrl.js')
 	script(src='app-src/js/controllers/profile-ctrl.js')
-	script(src='app-src/js/controllers/pages/feature-list-ctrl.js')
+	script(src='app-src/pages/project-overview/page_project-overview.js')
 	script(src='app-src/js/controllers/pages/feature-detail-ctrl.js')
 	script(src='app-src/js/controllers/includes/navigation-ctrl.js')
-	script(src='app-src/js/controllers/body-style-ctrl.js')
+	script(src='app-src/pages/body-style-ctrl.js')
 	//- app
 	script(src='app-src/js/configs/routes-cfg.js')
 	

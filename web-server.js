@@ -23,23 +23,9 @@ app.set('view engine', 'jade');
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-
-
-if (process.env.NODE_ENV !== "staging" && process.env.NODE_ENV !== "production") {
-  // only use the *.less middleware when in developement
-  console.log("using less middleware");
-  app.use(require('less-middleware')({
-    dest: path.join(__dirname, 'public', 'app-build', 'css'),
-    src: path.join(__dirname, 'public', 'app-src', 'less'),
-    prefix: '/app-build/css',
-    force: true, // Always re-compile less files on each request.
-    compress: true
-  })); // needs to be declared before static middleware (in order to get the recompile working)  
-} else {
-  console.log("skipped less middleware");
-}
-
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.use(app.router);
 
 // serve index and view partials

@@ -10,7 +10,7 @@ angular.module('config.routes', []).constant('routesCfg', [
 		{
 			state: 'list',
 			abstarct: true,
-			templateUrl: 'partials/layout_list'
+			templateUrl: 'layouts/layout_list.html'
 		},
 		{
 			state: 'detail',
@@ -19,7 +19,7 @@ angular.module('config.routes', []).constant('routesCfg', [
 		},
 
 		// releases
-		{state: 'list.features',														url: '/feature/list',																			views: {'content': {templateUrl: 'partials/list_releases',													controller: 'FeatureListCtrl' } } },
+		{state: 'list.project-overview',										url: '/project/overview',																	views: {'content': {templateUrl: 'app-build/pages/project-overview/page_project-overview.html',													controller: 'ProjectOverviewPage' } } },
 
 		{state: 'detail.feature',														url: '/feature/{featureId}',															views: {'content': {templateUrl: 'partials/counter-detail_release',									controller: 'FeatureDetailCtrl' } } },
 
