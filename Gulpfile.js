@@ -79,7 +79,64 @@ gulp.task('default', ['serve']);
 gulp.task('serve', ['css:stylus', 'jade', 'watch']);
 
 
-// gulp do:page --name pageName (camelCase)
+
+
+gulp.task('css:stylus', function () {
+  gulp.src('public/app-src/**/*.styl')
+    .pipe(stylus({compress: true}))
+    .pipe(gulp.dest('public/app-build/css'))
+    .on('error', err);
+});
+
+
+gulp.task('js:serve', function () {
+  return gulp.src('public/app-src/**/*.js')
+    .pipe(jshint(serve))
+    .pipe(jshint.reporter(stylish))
+    .pipe(jshint.reporter('fail'))
+    .on('error', err);
+});
+
+// compile jade into html and put into build foler
+gulp.task('jade', function() {
+  gulp.src(['public/app-src/**/*.jade'])
+    .pipe(jade({pretty:true}))
+    .pipe(gulp.dest('public/app-build'))
+    .on('error', jadeErr);
+    
+});
+
+// inject JS to index_debug
+gulp.task('clean', function() {
+ gulp.src('views/index_debug.jade')
+  .pipe(inject(gulp.src('public/app-src/pages/**/*.js', {read: false}), {name: 'pageController', ignorePath: "public/"}))
+  .pipe(gulp.dest('views/'));
+
+ gulp.src('views/index_debug.jade')
+  .pipe(inject(gulp.src('public/app-src/services/**/*.js', {read: false}), {name: 'services', ignorePath: "public/"}))
+  .pipe(gulp.dest('views/'));
+    
+});
+
+gulp.task('watch', function () {
+  gulp.watch('public/app-src/**/*.styl', ['css:stylus']);
+  // gulp.watch('public/app-src/**/*.js', ['js:serve']);
+  gulp.watch(['public/app-src/**/*.jade'], ['jade']);
+  // gulp.watch('gulpfile.js', gulpChanged);
+});
+
+
+
+
+
+
+
+
+/** creators
+------------------------------------------------------------------------------*/
+
+
+// gulp do:page --name PageName (camelCase)
 gulp.task('do:page', function () {
 
   console.log(util.colors.green('Using Page Name: ' + util.env.name)); 
@@ -150,37 +207,40 @@ gulp.task('do:page', function () {
 
 });
 
-gulp.task('css:stylus', function () {
-  gulp.src('public/app-src/**/*.styl')
-    .pipe(stylus({compress: true}))
-    .pipe(gulp.dest('public/app-build/css'))
-    .on('error', err);
+
+// gulp do:service --name ServiceName (camelCase)
+gulp.task('do:service', function () {
+
+  console.log(util.colors.green('Using Service Name: ' + util.env.name)); 
+
+  if(util.env.name === undefined) {
+    console.log(util.colors.red('you need to specify a Service name (e.g --name ResultsService)')); 
+    return null;
+  }
+
+  // TODO: stop if service already exist
+
+  var serviceRoot = 'app-src/common/services/';
+  var fileName = getDashedStringFromCamelCase(util.env.name);
+  var controllerName = util.env.name+'Service';
+
+    // create js page
+    gulp.src('templates/service/service.js')
+        .pipe(template({
+          name: controllerName, 
+          createdAt: new Date()
+        }))
+        .pipe(rename('service_'+fileName+".js"))
+        .pipe(gulp.dest('public/'+serviceRoot))
+        
+        // after page is created, add it to the index jade file 
+        .on('end', function () {
+          // ref page in jade file
+          gulp.src('views/index_debug.jade')
+            .pipe(inject(gulp.src('public/'+serviceRoot+"/**/*.js", {read: false}), {name: 'services', ignorePath: "public/"}))
+            .pipe(gulp.dest('views/'));
+        });
 });
-
-
-gulp.task('js:serve', function () {
-  return gulp.src('public/app-src/**/*.js')
-    .pipe(jshint(serve))
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'))
-    .on('error', err);
-});
-
-gulp.task('jade', function() {
-  gulp.src(['public/app-src/**/*.jade'])
-    .pipe(jade({pretty:true}))
-    .pipe(gulp.dest('public/app-build'))
-    .on('error', jadeErr);
-    
-});
-
-gulp.task('watch', function () {
-  gulp.watch('public/app-src/**/*.styl', ['css:stylus']);
-  // gulp.watch('public/app-src/**/*.js', ['js:serve']);
-  gulp.watch(['public/app-src/**/*.jade'], ['jade']);
-  // gulp.watch('gulpfile.js', gulpChanged);
-});
-
 
 
 

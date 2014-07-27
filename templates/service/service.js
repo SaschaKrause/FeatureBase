@@ -1,11 +1,11 @@
 // created at: <%= createdAt %>
-angular.module('myApp').controller('<%= name %>', function ($scope) {
+angular.module('myApp').factory('<%= name %>', function () {
   'use strict';  
 
   /** definition
   ----------------------------------------------------------------------------*/
 
-  $scope = {};
+  var service = {};
 
 
   /** public
@@ -18,5 +18,7 @@ angular.module('myApp').controller('<%= name %>', function ($scope) {
   /** private
   ----------------------------------------------------------------------------*/
 
+  
+  return service;
 
 });

@@ -1,11 +1,11 @@
-// created at: <%= createdAt %>
-angular.module('myApp').controller('<%= name %>', function ($scope) {
+// created at: Sun Jul 27 2014 15:15:59 GMT+0200 (CEST)
+angular.module('myApp').factory('FeatureDetailService', function () {
   'use strict';  
 
   /** definition
   ----------------------------------------------------------------------------*/
 
-  $scope = {};
+  var service = {};
 
 
   /** public
@@ -18,5 +18,7 @@ angular.module('myApp').controller('<%= name %>', function ($scope) {
   /** private
   ----------------------------------------------------------------------------*/
 
+  
+  return service;
 
 });

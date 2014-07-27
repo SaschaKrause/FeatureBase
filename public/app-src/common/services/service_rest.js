@@ -1,5 +1,5 @@
 // TODO: add the "service.rest"-module dependency to your mainApp (public/app-src/js/app.js)
-angular.module('myApp').factory('AbstractRestService',['$http', function($http) {
+angular.module('myApp').factory('AbstractRestService', function($http) {
 	'use strict';
 
 	var service = {
@@ -32,4 +32,4 @@ angular.module('myApp').factory('AbstractRestService',['$http', function($http) 
 	}
 
   return service;
-}]);
+});

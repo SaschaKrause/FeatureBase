@@ -1,5 +1,5 @@
 
-angular.module('config.routes', []).constant('routesCfg', [
+angular.module('myApp').constant('routesCfg', [
 
 		// layouts
 		{
@@ -23,7 +23,5 @@ angular.module('config.routes', []).constant('routesCfg', [
 
 		// {state: 'detail.feature',														url: '/feature/{featureId}',															views: {'content': {templateUrl: 'partials/counter-detail_release',									controller: 'FeatureDetailCtrl' } } },
 
-		{state: 'app.profile',															url: '/profile',																					views: {'content': {templateUrl: 'partials/profile',																controller: 'ProfileCtrl' } } },
-		{state: 'list.initialisation-main',									url: '/init',																							views: {'content': {templateUrl: 'partials/init',																		controller: 'ProfileCtrl'} } },
 		{state: 'list.feature-detail', url: '/features', views: {'content': {templateUrl: 'app-build/pages/feature-detail/page_feature-detail.html', controller: 'FeatureDetailPage'} } },
 	]);

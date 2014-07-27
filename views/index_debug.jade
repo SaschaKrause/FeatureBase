@@ -26,25 +26,34 @@ block body
 	script(src='app-src/app.js')
 
 	//- services
-	script(src='app-src/js/services/rest-service.js')
-	script(src='app-src/js/services/countree-service.js')
-	script(src='app-src/js/services/release-service.js')
+	//- script(src='app-src/js/services/rest-service.js')
+	//- script(src='app-src/js/services/release-service.js')
 	//- controllers
-	script(src='app-src/js/controllers/main-ctrl.js')
-	script(src='app-src/js/controllers/profile-ctrl.js')
+	//- script(src='app-src/js/controllers/main-ctrl.js')
+	//- script(src='app-src/js/controllers/profile-ctrl.js')
 	//- script(src='app-src/pages/project-overview/page_project-overview.js')
 	script(src='app-src/js/controllers/pages/feature-detail-ctrl.js')
 	script(src='app-src/js/controllers/includes/navigation-ctrl.js')
 	//- script(src='app-src/pages/body-style-ctrl.js')
 	//- app
-	script(src='app-src/js/configs/routes-cfg.js')
+	script(src='app-src/common/configs/routes-cfg.js')
 	
 
 	//- injected via gulp creator
 	//- --------------------------------------------------------------
 	
+
+	//- services:js
+	script(src="/app-src/common/services/release-service.js")
+	script(src="/app-src/common/services/service_rest.js")
+	script(src="/app-src/common/services/service_feature-detail.js")
+	//- endinject
+
+
+
 	//- pageController:js
 	script(src="/app-src/pages/body-style-ctrl.js")
 	script(src="/app-src/pages/feature-detail/page_feature-detail.js")
 	script(src="/app-src/pages/project-overview/page_project-overview.js")
 	//- endinject
+dinject

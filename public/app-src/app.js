@@ -5,16 +5,8 @@
       // lib
       'ui.router',
 
-      // config
-      'config.routes',
-
-
       'controller.include.navigation',
-      'controller.main',
-      'controller.profile',
 
-      // service
-      'service.countree'
   ]);
 
 
