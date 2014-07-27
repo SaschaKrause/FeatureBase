@@ -9,7 +9,6 @@ block body
 
 
 	div(ui-view)
-
 		
 	//- libs
 	script(src='app-lib/bower/angular/angular.js')
@@ -33,12 +32,19 @@ block body
 	//- controllers
 	script(src='app-src/js/controllers/main-ctrl.js')
 	script(src='app-src/js/controllers/profile-ctrl.js')
-	script(src='app-src/pages/project-overview/page_project-overview.js')
+	//- script(src='app-src/pages/project-overview/page_project-overview.js')
 	script(src='app-src/js/controllers/pages/feature-detail-ctrl.js')
 	script(src='app-src/js/controllers/includes/navigation-ctrl.js')
-	script(src='app-src/pages/body-style-ctrl.js')
+	//- script(src='app-src/pages/body-style-ctrl.js')
 	//- app
 	script(src='app-src/js/configs/routes-cfg.js')
 	
 
-
+	//- injected via gulp creator
+	//- --------------------------------------------------------------
+	
+	//- pageController:js
+	script(src="/app-src/pages/body-style-ctrl.js")
+	script(src="/app-src/pages/feature-detail/page_feature-detail.js")
+	script(src="/app-src/pages/project-overview/page_project-overview.js")
+	//- endinject
