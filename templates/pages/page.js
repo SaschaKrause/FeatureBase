@@ -2,7 +2,7 @@
 angular.module('myApp').controller('<%= name %>', function ($scope) {
   'use strict';  
 
-  /** definition
+  /** init
   ----------------------------------------------------------------------------*/
 
   $scope = {};

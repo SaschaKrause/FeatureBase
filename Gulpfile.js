@@ -14,6 +14,9 @@ var _ = require('lodash')
   , gulpMultinject = require('gulp-multinject')
   , inject = require('gulp-inject')
   , runSequence = require('run-sequence')
+  , clean = require('gulp-clean')
+  , nodemon = require('gulp-nodemon')
+  , livereload = require('gulp-livereload')
   , stylus = require('gulp-stylus');
 
 
@@ -76,8 +79,8 @@ gulpfile.globals._ = true;
 /** Gulp tasks
 ------------------------------------------------------------------------------*/
 gulp.task('default', ['serve']);
-gulp.task('serve', ['css:stylus', 'jade', 'watch']);
-
+// gulp.task('serve', ['css:stylus', 'jade', 'watch']);
+gulp.task('dev', ['serve', 'livereload']);
 
 
 
@@ -98,7 +101,7 @@ gulp.task('js:serve', function () {
 });
 
 // compile jade into html and put into build foler
-gulp.task('jade', function() {
+gulp.task('jade', ['clear:references', 'clear:build'], function() {
   gulp.src(['public/app-src/**/*.jade'])
     .pipe(jade({pretty:true}))
     .pipe(gulp.dest('public/app-build'))
@@ -106,17 +109,49 @@ gulp.task('jade', function() {
     
 });
 
-// inject JS to index_debug
-gulp.task('clean', function() {
- gulp.src('views/index_debug.jade')
-  .pipe(inject(gulp.src('public/app-src/pages/**/*.js', {read: false}), {name: 'pageController', ignorePath: "public/"}))
-  .pipe(gulp.dest('views/'));
 
- gulp.src('views/index_debug.jade')
-  .pipe(inject(gulp.src('public/app-src/services/**/*.js', {read: false}), {name: 'services', ignorePath: "public/"}))
-  .pipe(gulp.dest('views/'));
-    
+gulp.task('serve', ['css:stylus', 'jade', 'watch'], function(){
+  return nodemon({
+    script: 'web-server.js', options: '-i client/*'
+  });
 });
+
+
+// livereload browser on client app changes
+gulp.task('livereload', ['serve'], function(){
+  gulp.watch('public/app-build/**/*.html', ['jade']);
+  gulp.watch('public/app-build/css', ['css:stylus']);
+  var server = livereload();
+  var all_build_files = 'public/app-build/**/*';
+  return gulp.watch(all_build_files, function(evt){
+    server.changed(evt.path);
+  });
+});
+
+
+// inject JS to index
+gulp.task('clear:references', function() {
+ gulp.src('views/index.jade')
+  .pipe(inject(gulp.src('public/app-src/pages/**/*.js', {read: false}), {name: 'pageController', ignorePath: "public/"}))
+  .pipe(gulp.dest('views/')).on('end', function () {
+
+     gulp.src('views/index.jade')
+      .pipe(inject(gulp.src('public/app-src/common/services/**/*.js', {read: false}), {name: 'services', ignorePath: "public/"}))
+      .pipe(gulp.dest('views/'));
+
+
+  });
+});
+
+
+gulp.task('clear:build', function () {
+  // ok, we actually only clear the build/pages folder for now
+  return gulp.src('public/app-build/pages', {read: false})
+    .pipe(clean());
+});
+
+
+
 
 gulp.task('watch', function () {
   gulp.watch('public/app-src/**/*.styl', ['css:stylus']);
@@ -166,7 +201,7 @@ gulp.task('do:page', function () {
         // after page is created, add it to the index jade file 
         .on('end', function () {
           // ref page in jade file
-          gulp.src('views/index_debug.jade')
+          gulp.src('views/index.jade')
             .pipe(inject(gulp.src('public/'+pageRoot+"/**/*.js", {read: false}), {name: 'pageController', ignorePath: "public/"}))
             .pipe(gulp.dest('views/'));
 
@@ -236,7 +271,7 @@ gulp.task('do:service', function () {
         // after page is created, add it to the index jade file 
         .on('end', function () {
           // ref page in jade file
-          gulp.src('views/index_debug.jade')
+          gulp.src('views/index.jade')
             .pipe(inject(gulp.src('public/'+serviceRoot+"/**/*.js", {read: false}), {name: 'services', ignorePath: "public/"}))
             .pipe(gulp.dest('views/'));
         });

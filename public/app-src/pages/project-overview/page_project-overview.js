@@ -1,27 +1,25 @@
-angular.module('myApp').controller('ProjectOverviewPage', function ($scope, FeatureService, $state, $stateParams, $q) {
+angular.module('myApp').controller('ProjectOverviewPage', function ($scope, $state, $stateParams, $q) {
   'use strict';
 
   $scope.page = {
-    list: {
-      features: null
+    // all input bound models
+    inputs: {
+      name: {
+        male: null,
+        female: null
+      }
+    },
+
+
+    names: {
+      male: ['Moritz'],
+      female: ['Hannah', 'Klara', 'Karolin']
     }
   };
 
-  initList();
 
-  function initList() {
-    FeatureService.getProjectInfo(function onSuccess(featureHash) {
-      console.log(featureHash);
-      $scope.page.list.features = featureHash;
-    });
+  $scope.addFemaleName = function(name) {
+    $scope.page.names.female.push($scope.page.inputs.name.male);
   }
-
-  $scope.showDetailedFeature = function(featureId) {
-    $state.go('detail.feature', {featureId: featureId});
-  };
-
-  $scope.getProjectStartDate = function() {
-    return moment().format("YYYY-MM-DD");
-  };
 
 });

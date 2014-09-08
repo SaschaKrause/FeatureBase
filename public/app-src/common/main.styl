@@ -2,4 +2,22 @@
 body
 	background: white
 	color: black
-	border: 1px solid white
+
+
+
+/* you can also define the transition style
+   on the base class as well (.repeat-item) */
+.animated-repeat-item.ng-enter,
+.animated-repeat-item.ng-leave {
+  -webkit-transition:1.5s linear all;
+  transition:1.5s linear all;
+}
+
+.animated-repeat-item.ng-enter,
+.animated-repeat-item.ng-leave.ng-leave-active {
+  opacity:0;
+}
+.animated-repeat-item.ng-leave,
+.animated-repeat-item.ng-enter.ng-enter-active {
+  opacity:1;
+}

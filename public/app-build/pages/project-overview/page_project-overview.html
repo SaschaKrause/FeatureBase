@@ -1,38 +1,18 @@
 
-<section class="title-section">
-  <h4>Project Overview</h4>
-</section>
-<section class="row info">
-  <div class="content col-md-offset-3 col-md-6">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="project-title">{{page.list.features.title}} </h2>
-      </div>
+<div class="project-overview">
+  <section class="count">
+    <div class="release-title">
+      <div>Interstellar</div>
+      <div class="underline">MOVIE</div>
     </div>
-    <div class="row">
-      <div class="col-md-12"><i class="fa fa-calendar margin-right"></i><span>{{getProjectStartDate()}}</span></div>
+    <div class="progress-label">noch</div>
+    <div class="countainer">
+      <div class="days"> 142 Tage</div>
+      <div class="time">+ 03:25:47</div>
     </div>
-    <hr/>
-    <div class="row description">
-      <div class="col-md-12">Club Owners can bookmark workouts inside the predefined workout overview. These workouts are then easier to select when activation a new QR Code (Member)</div>
+    <div class="progress-label">bis zum 20. November 2014</div>
+    <div class="action-bar">
+      <button class="watchlist"><i class="fa fa-plus margin-right"></i>ADD TO MY WATCHLIST</button>
     </div>
-  </div>
-</section><span ng-include="'partials/navigation.jade'" class="navigation"></span>
-<section class="title-section">
-  <h4>Features</h4>
-</section>
-<section class="action-bar"><span><i class="fa fa-plus"></i> Draft new Feature</span></section>
-<section class="row feature-list">
-  <div ng-repeat="feature in page.list.features.features" class="col-md-6 feature-item">
-    <div ng-click="showDetailedFeature(feature.name)" class="item">
-      <div class="row head">
-        <div class="col-md-1"><i class="fa fa-flask"></i></div>
-        <div class="col-md-7"><span class="title">{{feature.title}}</span></div>
-        <div style="text-align:right" class="col-md-4"><span class="state">pubished</span></div>
-      </div>
-      <div class="row description">
-        <div class="col-md-12">{{feature.description}}</div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>

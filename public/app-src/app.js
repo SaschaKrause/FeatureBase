@@ -5,12 +5,11 @@
       // lib
       'ui.router',
 
-      'controller.include.navigation',
 
   ]);
 
 
-   mainApp.config(['$stateProvider', '$urlRouterProvider', 'routesCfg', function ($stateProvider, $urlRouterProvider, routesCfg) {
+   mainApp.config(function ($stateProvider, $urlRouterProvider, routesCfg, $locationProvider) {
 
     // iterate over the routes (configured as constants in config/routes-cfg.js)
     _.forEach(routesCfg, function (route) {
@@ -28,17 +27,17 @@
             }
           });
     });
-    
+    // $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/init'); 
 
-  }]);
+  });
 
 
-  mainApp.config(['$httpProvider', function($httpProvider) {
+  mainApp.config(function($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     // $httpProvider.defaults.useXDomain = true;
     // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-  }]);
+  });
      
 
 

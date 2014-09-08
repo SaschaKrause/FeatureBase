@@ -1,0 +1,58 @@
+@import "./common/config.styl"
+
+body.bodystate_watchlist
+  background-color: colors.background_secondary
+
+  
+// all styles containing the view container and below
+.watchlist
+  background-color: #23262C
+
+  .listitem
+    background-color: rgba(0,0,0,0.15)
+    padding: 16px 16px 16px 7px
+    border-left: 3px solid colors.category_movie
+    
+    margin-bottom: 8px
+
+    &.category-game 
+      border-color: colors.category_game
+      .counter .days 
+        background-color: colors.category_game
+        color: black
+
+    &.category-movie
+      border-color: colors.category_movie
+      .counter .days 
+        background-color: colors.category_movie
+        color: white
+
+    &.category-product
+      border-color: colors.category_product
+      .counter .days 
+        background-color: colors.category_product
+        color: black
+    
+
+    .category-name
+      font-size: 9px
+      color: rgba(255,255,255,0.5)
+      padding-top: 6px;
+
+    .title
+      font-size: 20px
+      color: rgba(255,255,255,0.8)
+
+    .counter
+      text-align: right
+
+      font-size: 16px
+      padding-top: 2px
+      .days
+        // font-size: 20px
+        padding: 2px 10px
+        
+        border-radius(3px)
+        margin-right: 10px
+      .time
+        color: rgba(255,255,255,0.5)
