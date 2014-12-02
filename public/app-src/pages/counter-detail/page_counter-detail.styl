@@ -1,0 +1,132 @@
+// @import "./common/config.styl"
+
+body.bodystate_counter-detail
+  
+// all styles containing the view container and below
+.counter-detail
+  
+
+  section.count
+    padding-top: 40px
+    text-align: center
+    // height: 600px
+    background-color: colors.background_secondary
+
+
+
+    &.category-movie 
+      .release-title .underline
+        border-color: colors.category_movie !important
+      .countainer .time
+        color: colors.category_movie !important
+
+    &.category-game 
+      .release-title .underline
+        border-color: colors.category_game !important
+      .countainer .time
+        color: colors.category_game !important      
+
+    &.category-product 
+      .release-title .underline 
+        border-color: colors.category_product !important
+      .countainer .time
+        color: colors.category_product !important
+      
+
+    &.category-event 
+      .release-title .underline 
+        border-color: colors.category_event !important
+      .countainer .time
+        color: colors.category_event !important
+      
+      
+
+    .release-title
+      color: rgba(255,255,255,0.7)
+      font-size: 28px
+      letter-spacing: 1.5px
+      font-family: 'Open Sans', sans-serif
+      font-weight: 300
+      margin-bottom: 30px
+      display: inline-block
+
+      .underline
+        margin-top: 10px
+        border-top: 2px solid colors.primary
+        padding-top: 8px
+        font-size: 9px
+
+
+    .progress-label
+      margin-top: 25px
+      font-size: 18px
+      color: rgba(255,255,255,0.40)
+
+    .countainer
+      margin-top: 25px
+      margin-bottom: 45px
+      color: rgba(255,255,255,0.9)
+      font-family: 'Open Sans', sans-serif
+      font-weight: 300      
+      letter-spacing: 1.5px
+
+      .days
+        font-size: 80px
+
+      .time
+        margin-top: 30px
+        font-size: 22px
+        color: colors.primary
+
+
+    .action-bar
+      margin-top: 55px
+      
+
+      .watchlist
+        background-color: rgba(255,255,255,0.1)
+        padding: 12px 16px
+        border-radius(5px)
+        font-family: 'Open Sans', sans-serif
+        font-weight: 300      
+        font-size: 12px
+        letter-spacing: 1.5px
+
+
+    .nav-wrapper
+      background-color: colors.background_primary
+      margin-top: 46px
+
+    nav.detail
+      display: inline-block
+      text-align: left
+      background-color: colors.background_primary
+      
+      padding: 10px 20px
+      font-family: Arial
+
+      ul
+        list-style-type: none
+        margin: 0
+        padding: 0
+
+        li
+          display: inline
+          padding: 0px 20px
+          color: rgba(0,0,0,0.5)
+          border-right: 1px solid rgba(0,0,0,0.5)
+          // padding: 0 10px 3px 10px
+
+          span.nav-item
+            padding: 0 10px 3px 10px
+
+
+          &.last
+            border-right: none
+
+          &.active
+            span.nav-item
+              color: rgba(0,0,0,0.9)
+              border-bottom: 2px solid colors.category_movie
+
+

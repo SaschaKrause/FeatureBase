@@ -1,0 +1,31 @@
+
+<div class="counter-detail">
+  <section class="count category-{{detailedCounter.category.name}}">
+    <div class="release-title">
+      <div>{{detailedCounter.name}}</div>
+      <div class="underline">{{detailedCounter.category.name.toUpperCase()}}</div>
+    </div>
+    <div class="progress-label">still</div>
+    <div class="countainer">
+      <div class="days">{{detailedCounter.differences.days}} Days</div>
+      <div class="time">+ {{detailedCounter.differences.hours}}:{{detailedCounter.differences.minutes}}:{{detailedCounter.differences.seconds}}</div>
+    </div>
+    <div class="progress-label">until release on {{detailedCounter.date | date:"dd. MMMM yyyy"}}</div>
+    <div class="action-bar">
+      <button class="watchlist"><i class="fa fa-plus margin-right"></i>ADD TO MY WATCHLIST</button>
+    </div>
+    <div class="row">
+      <div class="small-offset-2 small-8 columns">
+        <div class="nav-wrapper">
+          <nav class="detail">
+            <ul>
+              <li class="active"><span class="nav-item">Overview</span></li>
+              <li><span class="nav-item">Notifications</span></li>
+              <li class="last"><span class="nav-item">Ranking</span></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

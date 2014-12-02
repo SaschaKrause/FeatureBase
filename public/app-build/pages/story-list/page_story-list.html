@@ -1,0 +1,21 @@
+
+<div class="story-list">
+  <div class="row">
+    <div class="medium-3 columns">
+      <div class="filter-wrapper">
+        <label ng-repeat="roleFilter in storyFilter.roles">
+          <input type="checkbox" name="bla" value="{{roleFilter.name}}" ng-model="roleFilter.selected"/>{{roleFilter.name}}
+        </label>
+      </div>
+    </div>
+    <div class="medium-9 columns">
+      <div ng-repeat="story in stories" ui-sref="none.story-item({id: story.id})" ng-if="isStoryVisible(story)" class="story-wrapper">
+        <div class="row">
+          <div class="medium-12 columns">
+            <div class="card-wrapper">{{story.intro_label}} <span ng-repeat="role in story.roles"><span class="role highlight">{{role.name}}</span><span ng-if="!$last" class="role separator"> & </span></span> {{story.action_label}} <span class="role">{{story.action_value}} </span>{{story.result_label}}  <span class="role">{{story.result_value}}</span>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

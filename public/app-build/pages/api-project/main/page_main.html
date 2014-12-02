@@ -1,0 +1,93 @@
+
+<div class="api-main">
+  <div ng-repeat="request in requests">
+    <button ng-click="setCurrentRequest(request.id)" class="tiny">{{request.name}}| {{request.request.method}} {{request.request.endpoint}}</button>
+  </div>
+  <button ng-click="runSequence()">runSequence</button><br/><br/><br/><br/><br/>
+  <div class="row">
+    <div class="medium-offset-2 medium-8 columns">
+      <h4> DEFINITION</h4>
+      <div class="panel clearfix">
+        <div class="row">
+          <div class="medium-2 columns"> Method</div>
+          <div class="medium-3 columns">Host</div>
+          <div class="medium-7 columns">API endpoint</div>
+        </div>
+        <div class="row">
+          <div class="medium-2 columns">
+            <input type="text" ng-model="currentRequest.request.method"/>
+          </div>
+          <div class="medium-3 columns">
+            <input type="text" value="host"/>
+          </div>
+          <div class="medium-7 columns">
+            <input type="text" ng-model="currentRequest.request.endpoint"/>
+          </div>
+        </div>
+      </div>
+      <h4>DATA </h4>
+      <div class="panel clearfix">
+        <div class="row">
+          <div class="medium-12 columns">
+            <div>Available dataSets</div>
+            <table style="width:100%">
+              <tr ng-repeat="set in dataSet[0].sets">
+                <td> {{set.name}}  </td>
+                <td>
+                  <button style="margin-bottom: 5px" ng-click="loadParamsByIdFromSet(1, set.id)" class="button tiny">load</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <div>Headers</div>
+            <div>
+              <textarea ng-model="currentRequest.request.headers" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <div>Params</div>
+            <div>
+              <textarea ng-model="currentRequest.request.params" rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="medium-12 columns">
+            <button ng-click="saveDataSet()" class="tiny">save as dataset</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="medium-12 columns">
+          <div style="text-align='right'">
+            <button ng-click="go(currentRequest.id)" class="button">go</button>
+          </div>
+        </div>
+      </div>
+      <h4>DATA </h4>
+      <div class="panel clearfix">
+        <div class="row">
+          <div class="medium-12 columns">
+            <div ng-if="response.value">
+              <pretty-json json="response.value"></pretty-json>
+              <button ng-click="" class="small button">create schema check based of this result</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="medium-12 columns">
+          <h3>expect:  </h3>
+          <div>status {{request.response.expect.status}}</div>
+          <div>format {{request.response.expect.contains}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,47 +1,25 @@
 
 <div class="watchlist">
   <div class="row">
-    <div class="medium-offset-2 medium-8 columns listitem category-movie">
-      <div class="row">
-        <div class="small-2 columns category-name">MOVIE</div>
-        <div class="small-6 columns title">Interstellar</div>
-        <div class="small-4 columns counter"><span class="days">142 Tage </span><span class="time">+ 21:35:44</span></div>
-      </div>
+    <div class="medium-offset-2 medium-8 columns">
+      <h2>Watchlist</h2>
     </div>
   </div>
   <div class="row">
-    <div class="medium-offset-2 medium-8 columns listitem category-movie">
-      <div class="row">
-        <div class="small-2 columns category-name">MOVIE</div>
-        <div class="small-6 columns title">Star Wars: Episode 7</div>
-        <div class="small-4 columns counter"><span class="days">311 Tage </span><span class="time">+ 03:43:12</span></div>
-      </div>
+    <div class="medium-offset-2 medium-8 columns">
+      <div class="page subtitle">These are the releases you are currently watching</div>
     </div>
   </div>
-  <div class="row">
-    <div class="medium-offset-2 medium-8 columns listitem category-game">
-      <div class="row">
-        <div class="small-2 columns category-name">VIDEOGAME</div>
-        <div class="small-6 columns title">Civilization V</div>
-        <div class="small-4 columns counter"><span class="days">12 Tage </span><span class="time">+ 03:43:12</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="medium-offset-2 medium-8 columns listitem category-movie">
-      <div class="row">
-        <div class="small-2 columns category-name">MOVIE</div>
-        <div class="small-6 columns title">Guardians of the Galaxy</div>
-        <div class="small-4 columns counter"><span class="days">4 Tage </span><span class="time">+ 03:43:12</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="medium-offset-2 medium-8 columns listitem category-product">
-      <div class="row">
-        <div class="small-2 columns category-name">PRODUCT</div>
-        <div class="small-6 columns title">iPhone 6s</div>
-        <div class="small-4 columns counter"><span class="days">4 Tage </span><span class="time">+ 03:43:12</span></div>
+  <div class="list">            
+    <div ng-repeat="releaseItem in releases | orderBy:'daysLeft':false" class="row">
+      <div ui-sref="list.counter-detail({id: releaseItem.id})" class="medium-offset-2 medium-8 columns listitem">
+        <div class="row">
+          <div class="medium-12 small-12 columns title">{{releaseItem.name}}
+            <div class="category-bullet category-{{releaseItem.category.name}}"></div><span class="category-name">{{releaseItem.category.name}}</span>
+          </div>
+          <div class="medium-12 small-12 columns counter"><i class="fa fa-calendar"></i><span>{{releaseItem.date | date:"dd. MMMM yyyy"}} </span><span class="time"> (noch</span><span class="days">{{releaseItem.daysLeft}} Tage)</span><i class="fa fa-comments-o"></i><span>12</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

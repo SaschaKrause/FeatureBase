@@ -1,0 +1,84 @@
+//- created at: Mon Oct 13 2014 22:48:12 GMT+0200 (CEST)
+div.story-item
+
+  .row
+    .medium-offset-1.medium-10.columns
+
+      .complexety-level
+        | #US-{{story.id}}
+      //- will wrap the story with a united background
+      .story-wrapper  
+
+        .row
+          .small-12.medium-12.columns
+            .card-wrapper
+              .item-title
+                | Definition
+              h3
+                | {{story.intro_label}} 
+                span(ng-repeat="role in story.roles")
+                  span.role.highlight
+                    | {{role.name}}
+                  span.role.separator(ng-if="!$last")
+                    |  & 
+                 |  {{story.action_label}} 
+                span.role
+                  | {{story.action_value}} 
+                | {{story.result_label}}  
+                span.role
+                  | {{story.result_value}}
+                |.
+              hr
+              span.description
+                | {{story.description}}
+
+
+        //- .row 
+        //-   .medium-offset-5.medium-2.columns
+        //-     .connector
+
+
+        //- .row
+        //-   .small-12.medium-12.columns
+        //-     .card-wrapper
+        //-       .item-title
+        //-         | Challenges
+        //-       div.challenges
+        //-         i.fa.fa-hand-o-up(style="margin-right: 5px")
+        //-         | We have to make sure that this doesnt affect club owners
+
+        //-       div.challenges
+        //-         i.fa.fa-hand-o-up(style="margin-right: 5px")
+        //-         | Users should still be able to use an QR code
+
+        .row 
+          .medium-offset-5.medium-2.columns
+            .connector
+
+
+        .row
+          .small-12.medium-12.columns
+            .card-wrapper
+              .item-title
+                | Crew
+              //- h3
+              //-   | Crew
+              ul.crew-list
+                li
+                  span.crew-prefix
+                    | pix/dev/ 
+                  span.crew-name
+                    | Front-End
+                li
+                  span.crew-prefix
+                    | pix/dev/ 
+                  span.crew-name
+                    | Back-End
+                li.last
+                  span.crew-prefix
+                    | pix/ 
+                  span.crew-name
+                    | Design
+
+
+

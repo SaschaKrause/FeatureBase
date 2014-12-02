@@ -1,0 +1,59 @@
+//- created at: Tue Sep 09 2014 00:30:18 GMT+0200 (CEST)
+.counter-detail
+  
+  section.count(class="category-{{detailedCounter.category.name}}")
+
+    .release-title
+      div
+        |{{detailedCounter.name}}
+      .underline
+        | {{detailedCounter.category.name.toUpperCase()}}
+
+
+    .progress-label
+      |still
+
+
+    .countainer
+      .days
+        | {{detailedCounter.differences.days}} Days
+      .time
+        | + {{detailedCounter.differences.hours}}:{{detailedCounter.differences.minutes}}:{{detailedCounter.differences.seconds}}
+
+    .progress-label
+      |until release on {{detailedCounter.date | date:"dd. MMMM yyyy"}}
+
+
+
+    .action-bar
+      button.watchlist
+        i.fa.fa-plus.margin-right
+        | ADD TO MY WATCHLIST
+
+
+    .row
+      .small-offset-2.small-8.columns
+        .nav-wrapper
+
+          nav.detail
+            ul
+              li.active
+                span.nav-item
+                  |Overview
+              //- li
+              //-   span.nav-item
+              //-     |Comments
+              //- li
+              //-   span.nav-item
+              //-     |Notifications
+              //- li
+              //-   span.nav-item
+              //-     |Notifications
+              li
+                span.nav-item
+                  |Notifications
+              li.last
+                span.nav-item
+                  |Ranking
+
+                  

@@ -1,0 +1,6 @@
+.layout-app
+  #sidebar-wrapper(ng-include="'app-build/pages/sidebar/sidebar.html'")
+
+  section.main(id="content", class="container")
+    div(ui-view="content", class="wrapper")
+  

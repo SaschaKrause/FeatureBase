@@ -1,0 +1,24 @@
+
+<div class="story-areas">
+  <div class="row">
+    <div style=" padding: 16px; background-color: rgba(255, 255, 255, 0.25)" class="medium-12 columns">
+      <table style="width:100%;  background: none !important; margin-bottom: 0;">
+        <thead>
+          <tr>
+            <th>features</th>
+            <th ng-repeat="area in areas" style="text-align:center;"> <span style="font-size: 14px;">{{area.name}}   </span></th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="category in categories">
+          <tr class="category">
+            <td colspan="{{areas.length +1}}">{{category.name}} <span class="category-subtitle"> - {{category.description}}</span></td>
+          </tr>
+          <tr ng-repeat="story in getStoriesFromCategory(category.id)" ui-sref="none.story-item({id: story.id})" class="story">
+            <td class="story-summary"><i class="fa fa-chevron-right"></i>{{story.summary}} <i ng-if="story.profit" style="float:right;font-size:16px" class="fa fa-euro"></i></td>
+            <td ng-repeat="area in areas" style="text-align:center;"><span ng-repeat="impact in _.range(0,getImpactFromStoryForArea(area.id, story.id))" class="impact-indicator"><i style="font-size:10px;" class="fa fa-circle"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

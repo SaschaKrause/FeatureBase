@@ -1,0 +1,37 @@
+
+<div class="story-item">
+  <div class="row">
+    <div class="medium-offset-1 medium-10 columns">
+      <div class="complexety-level">#US-{{story.id}}</div>
+      <div class="story-wrapper"> 
+        <div class="row">
+          <div class="small-12 medium-12 columns">
+            <div class="card-wrapper">
+              <div class="item-title">Definition</div>
+              <h3>{{story.intro_label}} <span ng-repeat="role in story.roles"><span class="role highlight">{{role.name}}</span><span ng-if="!$last" class="role separator"> & </span></span> {{story.action_label}} <span class="role">{{story.action_value}} </span>{{story.result_label}}  <span class="role">{{story.result_value}}</span>.</h3>
+              <hr/><span class="description">{{story.description}}</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row"> 
+          <div class="medium-offset-5 medium-2 columns">
+            <div class="connector"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 medium-12 columns">
+            <div class="card-wrapper">
+              <div class="item-title">Crew</div>
+              <ul class="crew-list">
+                <li><span class="crew-prefix">pix/dev/ </span><span class="crew-name">Front-End</span></li>
+                <li><span class="crew-prefix">pix/dev/ </span><span class="crew-name">Back-End</span></li>
+                <li class="last"><span class="crew-prefix">pix/ </span><span class="crew-name">Design</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

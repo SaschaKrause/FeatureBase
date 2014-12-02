@@ -1,0 +1,51 @@
+@import "./common/config.styl"
+
+body.bodystate_story-areas
+  min-width: 1280px;
+  display: block
+  background-color: #F1B64B
+  // background-color: #7AA850
+  padding: 60px 30px 0 30px
+  
+  
+// all styles containing the view container and below
+.story-areas
+  display: block
+
+  tr.category
+    td 
+      padding: 30px 0 15px 5px
+      color: rgba(0, 0, 0, 0.60)
+      font-size: 22px
+      background-color: #EDEDED
+      
+      .category-subtitle
+        font-size: 13px
+
+
+
+  tr.story
+    &:hover 
+      cursor: pointer
+      td
+        background-color: #65A84F;
+        color: white
+
+      .impact-indicator
+        color: white
+          
+    td.story-summary
+      font-size: 16px;
+      
+      .fa
+        margin-right: 5px;
+        font-size: 12px;
+        color: #65A84F;
+
+    td 
+      border: 1px solid rgba(0, 0, 0, 0.05)
+      background-color: #fff
+
+    .impact-indicator
+      margin-right: 1px
+      color: #65A84F

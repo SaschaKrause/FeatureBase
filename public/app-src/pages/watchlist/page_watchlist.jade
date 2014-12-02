@@ -2,72 +2,38 @@
 div.watchlist
 
   .row
-    .medium-offset-2.medium-8.columns.listitem.category-movie
-
-      .row
-        .small-2.columns.category-name
-          | MOVIE
-        .small-6.columns.title
-          | Interstellar
-        .small-4.columns.counter
-          span.days
-            | 142 Tage 
-          span.time
-            | + 21:35:44
-
-
+    .medium-offset-2.medium-8.columns
+      h2
+        |Watchlist
+    
   .row
-    .medium-offset-2.medium-8.columns.listitem.category-movie
+    .medium-offset-2.medium-8.columns
+      .page.subtitle
+        |These are the releases you are currently watching
 
-      .row
-        .small-2.columns.category-name
-          | MOVIE
-        .small-6.columns.title
-          | Star Wars: Episode 7
-        .small-4.columns.counter
-          span.days
-            | 311 Tage 
-          span.time
-            | + 03:43:12
 
-  .row
-    .medium-offset-2.medium-8.columns.listitem.category-game
+  .list             
+    .row(ng-repeat="releaseItem in releases | orderBy:'daysLeft':false")
+      .medium-offset-2.medium-8.columns.listitem(ui-sref="list.counter-detail({id: releaseItem.id})")
 
-      .row
-        .small-2.columns.category-name
-          | VIDEOGAME
-        .small-6.columns.title
-          | Civilization V
-        .small-4.columns.counter
-          span.days
-            | 12 Tage 
-          span.time
-            | + 03:43:12
-
-  .row
-    .medium-offset-2.medium-8.columns.listitem.category-movie
-
-      .row
-        .small-2.columns.category-name
-          | MOVIE
-        .small-6.columns.title
-          | Guardians of the Galaxy
-        .small-4.columns.counter
-          span.days
-            | 4 Tage 
-          span.time
-            | + 03:43:12
-
-  .row
-    .medium-offset-2.medium-8.columns.listitem.category-product
-
-      .row
-        .small-2.columns.category-name
-          | PRODUCT
-        .small-6.columns.title
-          | iPhone 6s
-        .small-4.columns.counter
-          span.days
-            | 4 Tage 
-          span.time
-            | + 03:43:12
+        .row
+          //- .medium-2.columns.category-name
+            | {{releaseItem.category.name.toUpperCase()}} 
+          .medium-12.small-12.columns.title
+            | {{releaseItem.name}}
+            .category-bullet(class="category-{{releaseItem.category.name}}")
+            span.category-name
+              | {{releaseItem.category.name}}
+          .medium-12.small-12.columns.counter
+            i.fa.fa-calendar
+            span
+              | {{releaseItem.date | date:"dd. MMMM yyyy"}} 
+            span.time
+              |  (noch
+            span.days
+              |{{releaseItem.daysLeft}} Tage)
+            i.fa.fa-comments-o
+            span
+              | 12
+            //- span.time
+            //-   | + 03:43:12

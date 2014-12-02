@@ -1,0 +1,108 @@
+//- created at: Tue Sep 09 2014 00:30:18 GMT+0200 (CEST)
+.api-main
+  
+  div(ng-repeat="request in requests")
+    button.tiny(ng-click="setCurrentRequest(request.id)")
+      | {{request.name}}| {{request.request.method}} {{request.request.endpoint}}
+
+
+  button(ng-click="runSequence()")
+    | runSequence
+
+  br
+  br
+  br
+  br
+  br
+  .row
+    .medium-offset-2.medium-8.columns
+
+      h4
+        | DEFINITION
+      .panel.clearfix
+        .row
+          .medium-2.columns
+            | Method
+          .medium-3.columns
+            | Host
+          .medium-7.columns
+            | API endpoint
+
+
+        .row
+          .medium-2.columns
+            input(type="text", ng-model="currentRequest.request.method")
+          .medium-3.columns
+            input(type="text", value="host")
+          .medium-7.columns
+            input(type="text", ng-model="currentRequest.request.endpoint")
+
+
+      h4
+        |DATA 
+      .panel.clearfix
+        .row
+          .medium-12.columns
+            div
+              | Available dataSets
+            table(style="width:100%")
+              tr(ng-repeat="set in dataSet[0].sets")
+                td
+                  | {{set.name}}  
+                td
+                  button.button.tiny(style="margin-bottom: 5px", ng-click="loadParamsByIdFromSet(1, set.id)")
+                    | load
+
+
+        .row
+          .medium-12.columns
+            div
+              | Headers
+            div
+              textarea(ng-model="currentRequest.request.headers", rows="3")
+
+        .row
+          .medium-12.columns
+            div
+              | Params
+            div
+              textarea(ng-model="currentRequest.request.params", rows="6")
+
+
+        .row
+          .medium-12.columns
+            button.tiny(ng-click="saveDataSet()")
+              | save as dataset
+
+      .row
+        .medium-12.columns
+          div(style="text-align='right'")
+            button.button(ng-click="go(currentRequest.id)")
+              | go
+
+
+      h4
+        |DATA 
+      .panel.clearfix
+        .row
+          .medium-12.columns
+            div(ng-if="response.value")
+              pretty-json(json="response.value")
+              button.small.button(ng-click="")
+                | create schema check based of this result
+
+
+
+      hr
+      
+      .row
+        .medium-12.columns
+          h3
+            | expect:  
+          div
+            | status {{request.response.expect.status}}
+            
+          div
+            | format {{request.response.expect.contains}}
+
+

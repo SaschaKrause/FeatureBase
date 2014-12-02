@@ -19,6 +19,9 @@ var _ = require('lodash')
   , livereload = require('gulp-livereload')
   , stylus = require('gulp-stylus');
 
+// include, if you're going to use nib helper library
+var nib = require('nib');
+
 
 /** jshint options
 ------------------------------------------------------------------------------*/
@@ -86,7 +89,10 @@ gulp.task('dev', ['serve', 'livereload']);
 
 gulp.task('css:stylus', function () {
   gulp.src('public/app-src/**/*.styl')
-    .pipe(stylus({compress: true}))
+    .pipe(stylus({
+      use: nib(),
+      compress: true
+    }))
     .pipe(gulp.dest('public/app-build/css'))
     .on('error', err);
 });

@@ -1,0 +1,38 @@
+//- created at: Mon Oct 20 2014 22:01:48 GMT+0200 (CEST)
+div.story-list
+  
+
+  .row
+    .medium-3.columns
+      .filter-wrapper
+        label(ng-repeat="roleFilter in storyFilter.roles")
+          input(type="checkbox", name="bla", value="{{roleFilter.name}}", ng-model="roleFilter.selected")
+          |{{roleFilter.name}}
+
+    .medium-9.columns
+
+      .story-wrapper(ng-repeat="story in stories", ui-sref="none.story-item({id: story.id})", ng-if="isStoryVisible(story)")
+        //- .row
+          .medium-12.columns
+            .complexety-level
+              i.fa.fa-fire
+              |  {{story.id}} teams
+            .complexety-level
+              i.fa.fa-check-square-o
+              |  3/6
+        .row
+          .medium-12.columns
+            .card-wrapper
+              | {{story.intro_label}} 
+              span(ng-repeat="role in story.roles")
+                span.role.highlight
+                  | {{role.name}}
+                span.role.separator(ng-if="!$last")
+                  |  & 
+               |  {{story.action_label}} 
+              span.role
+                | {{story.action_value}} 
+              | {{story.result_label}}  
+              span.role
+                | {{story.result_value}}
+              |.

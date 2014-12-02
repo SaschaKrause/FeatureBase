@@ -3,10 +3,26 @@
 
   var mainApp = angular.module('myApp', [
       // lib
-      'ui.router',
+      // 'ngPrettyJson',
+      'ui.router'
 
 
   ]);
+
+
+  // mainApp.directive('snippet', ['$timeout', '$interpolate', function ($timeout, $interpolate) {
+  //       "use strict";
+  //       return {
+  //           restrict: 'E',
+  //           template: '<pre><code ng-transclude></code></pre>',
+  //           replace: true,
+  //           transclude: true,
+  //           link: function (scope, elm) {
+  //               var tmp = $interpolate(elm.find('code').text())(scope);
+  //               elm.find('code').html(hljs.highlightAuto(tmp).value);
+  //           }
+  //       };
+  //   }]);
 
 
    mainApp.config(function ($stateProvider, $urlRouterProvider, routesCfg, $locationProvider) {
@@ -16,7 +32,7 @@
       $stateProvider.
           state(route.state, {
             url: route.url,
-            templateUrl: 'app-build/pages/'+route.templateUrl,
+            templateUrl: route.templateUrl,
             controller: route.controller, 
             views : route.views, 
             onEnter: function() {
@@ -29,14 +45,13 @@
     });
     // $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/init'); 
-
   });
 
 
   mainApp.config(function($httpProvider) {
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    // $httpProvider.defaults.useXDomain = true;
-    // $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    delete $httpProvider.defaults.headers.common['X-CSRFToken'];
   });
      
 
